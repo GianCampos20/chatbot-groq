@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import requests
 import logging
 import sys
+import os
 from src.Router import Router
 from src.Header import Header
 from src.Data_Bot import Data_Bot
@@ -77,4 +78,5 @@ def send():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 1000))
+    app.run(host="0.0.0", port=port)
